@@ -22,6 +22,11 @@ GPIO.setup(l_gre, GPIO.OUT, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(l_red, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
 
 # code goes here
+pygame.mixer.init()
+sound = pygame.mixer.Sound('./audiofiles/ding.wav')
+playing = sound.play()
+while playing.get_busy():
+    pygame.time.delay(100)
 
 GPIO.cleanup()
 sys.exit()
