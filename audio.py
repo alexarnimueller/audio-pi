@@ -6,11 +6,11 @@ import pygame
 import RPi.GPIO as GPIO
 
 # define GPIO pins
-b_play = 1  # play button (green)
-b_next = 2  # next button (black)
-b_prev = 3  # previous button (black)
-l_gre = 4   # green LED (play)
-l_red = 5   # red LED (pause)
+b_play = 16  # play button (green)
+b_next = 20  # next button (black)
+b_prev = 12  # previous button (black)
+l_gre = 26   # green LED (play)
+l_red = 13   # red LED (pause)
 
 # setup GPIO pins to IN or OUT mode with pulldown resistor
 GPIO.setmode(GPIO.BOARD)
