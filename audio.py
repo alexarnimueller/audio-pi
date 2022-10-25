@@ -12,8 +12,9 @@ from signal import pause
 b_play = Button(16, pull_up=False)  # play button (green)
 b_next = Button(20, pull_up=False)  # next button (black)
 b_prev = Button(12, pull_up=False)  # previous button (black)
-# l_gre = LED(13)   # green LED (play)
-l_red = LED(26)   # red LED (pause)
+l_gre = LED(26)   # green LED (play)
+l_red = LED(13)   # red LED (pause)
+
 l_red.on()
 
 audiodir = "/media/pi/UNTITLED"  # "./audiofiles"
@@ -23,6 +24,7 @@ mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
 mixer.init()
 print(audiofiles[0])
 mixer.music.load(audiofiles[0])
+l_gre.on()
 mixer.music.play()
 
 def next():
