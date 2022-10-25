@@ -9,9 +9,9 @@ from gpiozero import Button, LED
 from signal import pause 
 
 # define GPIO pins
-b_play = Button(16, pull_down=False)  # play button (green)
-b_next = Button(20, pull_down=False)  # next button (black)
-b_prev = Button(12, pull_down=False)  # previous button (black)
+b_play = Button(16, pull_up=False)  # play button (green)
+b_next = Button(20, pull_up=False)  # next button (black)
+b_prev = Button(12, pull_up=False)  # previous button (black)
 l_gre = LED(26)   # green LED (play)
 l_red = LED(13)   # red LED (pause)
 l_red.on()
