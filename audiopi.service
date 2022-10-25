@@ -1,0 +1,12 @@
+[Unit]
+Description=Audio Player Black Box
+After=network.target
+
+[Service]
+Type=idle
+Restart=on-failure
+User=root
+ExecStart=/usr/bin/python /uome/pi/Documents/audio-pi/audio.py
+
+[Install]
+WantedBy=multi-user.target
