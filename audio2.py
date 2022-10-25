@@ -16,35 +16,40 @@ l_gre = LED(26)   # green LED (play)
 l_red = LED(13)   # red LED (pause)
 l_red.on()
 
-basedir = os.path.dirname(__file__)
-audiofiles = deque([f"{basedir}/audiofiles/{f}" for f in os.listdir(f"{basedir}/audiofiles")])
+audiodir = os.path.dirname(__file__) + "/audiofiles"
+audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}")])
 
 mixer.init()
-mixer.Sound(audiofiles[0])
+mixer.music.load(audiofiles[0])
+mixer.music.play(-1)
 
 def next():
-    mixer.stop()
+    mixer.music.stop()
     audiofiles.rotate(1)
-    sleep(0.25)
-    mixer.Sound(audiofiles[0])
+    sleep(0.2)
+    mixer.music.load(audiofiles[0])
+    mixer.music.play()
     print("NEXT")
 
 def prev():
-    mixer.stop()
+    mixer.music.stop()
     audiofiles.rotate(-1)
-    sleep(0.25)
-    mixer.Sound(audiofiles[0])
+    sleep(0.2)
+    mixer.music.load(audiofiles[0])
+    mixer.music.play()
     print("PREVIOUS") 
 
 def play():
     l_red.off()
     l_gre.on()
-    if mixer.get_busy():
-        mixer.pause()
+    if mixer.music.get_busy():
+        mixer.music.pause()
         print("PAUSE")
+        sleep(0.2)
     else:
-        mixer.play()
+        mixer.music.unpause()
         print("PLAY")
+        sleep(0.2)
 
 b_play.when_pressed = play 
 b_next.when_pressed = next 
