@@ -12,7 +12,7 @@ from signal import pause
 b_play = Button(16, pull_up=False)  # play button (green)
 b_next = Button(20, pull_up=False)  # next button (black)
 b_prev = Button(12, pull_up=False)  # previous button (black)
-l_gre = LED(26)   # green LED (play)
+# l_gre = LED(26)   # green LED (play)
 l_red = LED(13)   # red LED (pause)
 l_red.on()
 
@@ -27,6 +27,7 @@ mixer.music.play()
 def next():
     mixer.music.stop()
     audiofiles.rotate(1)
+    print(audiofiles[0])
     sleep(0.2)
     mixer.music.load(audiofiles[0])
     mixer.music.play()
@@ -38,6 +39,7 @@ def prev():
     else:
         mixer.music.stop()
         audiofiles.rotate(-1)
+        print(audiofiles[0])
         sleep(0.2)
         mixer.music.load(audiofiles[0])
         mixer.music.play()
@@ -45,14 +47,10 @@ def prev():
 
 def play():
     if mixer.music.get_busy():
-        l_gre.off()
-        l_red.on()
         mixer.music.pause()
         print("PAUSE")
         sleep(0.2)
     else:
-        l_gre.on()
-        l_red.on()
         mixer.music.play()
         print("PLAY")
         sleep(0.2)
