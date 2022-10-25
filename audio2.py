@@ -16,7 +16,8 @@ l_gre = LED(26)   # green LED (play)
 l_red = LED(13)   # red LED (pause)
 l_red.on()
 
-audiofiles = deque([f"./audiofiles/{f}" for f in os.listdir("./audiofiles")])
+basedir = os.path.dirname(__file__)
+audiofiles = deque([f"{basedir}/audiofiles/{f}" for f in os.listdir(f"{basedir}/audiofiles")])
 
 mixer.init()
 mixer.Sound(audiofiles[0])
