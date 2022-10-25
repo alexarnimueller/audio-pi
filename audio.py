@@ -19,10 +19,10 @@ l_red.on()
 audiodir = "/media/pi/UNTITLED/"  # "./audiofiles"
 audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}") if not f.startswith('.')])
 
-mixer.pre_init(frequency=44100, size=16, channels=1)
+mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
 mixer.init()
 mixer.music.load(audiofiles[0])
-mixer.music.play(-1)
+mixer.music.play()
 
 def next():
     mixer.music.stop()
