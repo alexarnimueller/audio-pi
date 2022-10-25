@@ -21,6 +21,7 @@ audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}") if not 
 
 mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
 mixer.init()
+print(audiofiles[0])
 mixer.music.load(audiofiles[0])
 mixer.music.play()
 
