@@ -19,6 +19,7 @@ l_red.on()
 audiodir = "/media/pi/UNTITLED/"  # "./audiofiles"
 audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}")])
 
+mixer.pre_init(frequency=44100, size=16, channels=1)
 mixer.init()
 mixer.music.load(audiofiles[0])
 mixer.music.play(-1)
