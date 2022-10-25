@@ -16,7 +16,7 @@ l_gre = LED(26)   # green LED (play)
 l_red = LED(13)   # red LED (pause)
 l_red.on()
 
-audiodir = os.path.dirname(__file__) + "/audiofiles"
+audiodir = "/media/pi/UNTITLED/"  # "./audiofiles"
 audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}")])
 
 mixer.init()
