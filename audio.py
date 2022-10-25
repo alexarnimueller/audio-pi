@@ -16,7 +16,7 @@ b_prev = Button(12, pull_up=False)  # previous button (black)
 l_red = LED(13)   # red LED (pause)
 l_red.on()
 
-audiodir = "/media/pi/UNTITLED/"  # "./audiofiles"
+audiodir = "/media/pi/UNTITLED"  # "./audiofiles"
 audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}") if not f.startswith('.')])
 
 mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
