@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=idle
 Restart=on-failure
-User=root
-ExecStart=/usr/bin/python /uome/pi/Documents/audio-pi/audio.py
+User=pi
+ExecStart=/usr/bin/python /home/pi/Documents/audio-pi/audio.py
 
 [Install]
 WantedBy=multi-user.target
