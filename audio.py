@@ -18,8 +18,8 @@ l_red = LED(13)   # red LED (pause)
 l_red.on()
 l_gre.on()
 
-audiodir = "/media/pi/UNTITLED/"  # "./audiofiles"
-audiofiles = deque([f"{audiodir}{f}" for f in os.listdir(f"{audiodir}") if not f.startswith('.')])
+audiodir = "/media/pi/UNTITLED"  # "./audiofiles"
+audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}") if not f.startswith('.')])
 
 mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
 mixer.init()
@@ -48,7 +48,7 @@ def prev():
         print("PREVIOUS")
 
 def play():
-    if mixer.music.get_busy() and not pause:
+    if mixer.music.get_busy() and not is_paused:
         mixer.music.pause()
         is_paused = True
         sleep(0.2)
