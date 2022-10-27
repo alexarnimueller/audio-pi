@@ -16,46 +16,44 @@ l_gre = LED(26)   # green LED (play)
 l_red = LED(13)   # red LED (pause)
 
 l_red.on()
+l_gre.on()
 
-audiodir = "/media/pi/UNTITLED"  # "./audiofiles"
-audiofiles = deque([f"{audiodir}/{f}" for f in os.listdir(f"{audiodir}") if not f.startswith('.')])
+audiodir = "/media/pi/*/"  # "./audiofiles"
+audiofiles = deque([f"{audiodir}{f}" for f in os.listdir(f"{audiodir}") if not f.startswith('.')])
 
 mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
 mixer.init()
-print(audiofiles[0])
 mixer.music.load(audiofiles[0])
-l_gre.on()
 mixer.music.play()
+pause = False
 
 def next():
     mixer.music.stop()
     audiofiles.rotate(1)
-    print(audiofiles[0])
     sleep(0.2)
     mixer.music.load(audiofiles[0])
     mixer.music.play()
-    print("NEXT")
 
 def prev():
-    if mixer.music.get_pos() > 0 and not mixer.music.get_busy:
+    if pause:
         mixer.music.play(start=0.0)        
     else:
         mixer.music.stop()
         audiofiles.rotate(-1)
-        print(audiofiles[0])
         sleep(0.2)
         mixer.music.load(audiofiles[0])
         mixer.music.play()
-    print("PREVIOUS") 
 
 def play():
-    if mixer.music.get_busy():
+    if mixer.music.get_busy() and not pause:
         mixer.music.pause()
-        print("PAUSE")
+        pause = True
         sleep(0.2)
+    elif pause:
+        mixer.music.unpause()
+        pause = False
     else:
         mixer.music.play()
-        print("PLAY")
         sleep(0.2)
 
 b_play.when_pressed = play 
