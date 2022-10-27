@@ -43,7 +43,7 @@ def prev():
     else:
         mixer.music.stop()
         audiofiles.rotate(1)
-        sleep(0.2)
+        sleep(0.5)
         mixer.music.load(audiofiles[0])
         mixer.music.play()
         print("PREVIOUS")
@@ -53,7 +53,7 @@ def play():
     if mixer.music.get_busy() and not is_paused:
         mixer.music.pause()
         is_paused = True
-        sleep(0.2)
+        sleep(0.5)
         print("PAUSE")
     elif is_paused:
         mixer.music.unpause()
@@ -61,7 +61,7 @@ def play():
         print("CONTINUE")
     else:
         mixer.music.play()
-        sleep(0.2)
+        sleep(0.5)
         print("PLAY")
 
 b_play.when_pressed = play 
