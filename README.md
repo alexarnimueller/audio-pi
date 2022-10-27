@@ -6,6 +6,13 @@
 
 `pip install -r requirements.txt`
 
+set the persistent mount point:
+
+run `sudo vim /etc/fstab` and add:
+
+`/dev/sda1      /media/pi/AUDIO    vfat    rw,defaults     0       0`
+
+
 Set up the startup service / daemon:
 
 ```
