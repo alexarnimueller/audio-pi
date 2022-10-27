@@ -18,7 +18,7 @@ l_red = LED(13)   # red LED (pause)
 l_red.on()
 l_gre.on()
 
-audiodir = "/media/pi/*/"  # "./audiofiles"
+audiodir = "/media/pi/UNTITLED/"  # "./audiofiles"
 audiofiles = deque([f"{audiodir}{f}" for f in os.listdir(f"{audiodir}") if not f.startswith('.')])
 
 mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
