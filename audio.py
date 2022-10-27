@@ -25,7 +25,7 @@ mixer.pre_init(frequency=44100, size=16, channels=2, buffer=4096)
 mixer.init()
 mixer.music.load(audiofiles[0])
 mixer.music.play()
-pause = False
+is_paused = False
 
 def next():
     mixer.music.stop()
@@ -35,7 +35,7 @@ def next():
     mixer.music.play()
 
 def prev():
-    if pause:
+    if is_paused:
         mixer.music.play(start=0.0)        
     else:
         mixer.music.stop()
@@ -49,9 +49,9 @@ def play():
         mixer.music.pause()
         pause = True
         sleep(0.2)
-    elif pause:
+    elif is_paused:
         mixer.music.unpause()
-        pause = False
+        is_paused = False
     else:
         mixer.music.play()
         sleep(0.2)
