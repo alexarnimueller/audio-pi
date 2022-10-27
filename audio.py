@@ -52,7 +52,7 @@ def play():
     global is_paused
     if mixer.music.get_busy() and not is_paused:
         mixer.music.pause()
-        is_paused = True
+        is_paused = False
         sleep(0.5)
         print("PAUSE")
     elif is_paused:
